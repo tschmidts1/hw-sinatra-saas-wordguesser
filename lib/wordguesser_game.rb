@@ -33,6 +33,10 @@ class WordGuesserGame
     end
   end
 
+  def word_with_guesses
+
+  end
+
 
   # You can test it by installing irb via $ gem install irb
   # and then running $ irb -I. -r app.rb
