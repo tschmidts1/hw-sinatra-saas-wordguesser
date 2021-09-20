@@ -15,6 +15,15 @@ class WordGuesserGame
     @wrong_guesses = ''
   end
 
+  def guess(letter)
+    # puts word, letter, word.include?(letter)
+    if word.include?(letter)
+      self.guesses = letter
+    else
+      self.wrong_guesses = letter
+    end
+  end
+
 
   # You can test it by installing irb via $ gem install irb
   # and then running $ irb -I. -r app.rb
