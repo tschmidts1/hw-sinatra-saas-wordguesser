@@ -13,14 +13,19 @@ class WordGuesserGame
     @word = word
     @guesses = ''
     @wrong_guesses = ''
+
   end
 
-  def guess(letter)
+  def guess(letter='')
     # puts word, letter, word.include?(letter)
-    if word.include?(letter)
-      self.guesses = letter
+    if letter.match(/\A[a-z]\z/) and !self.guesses.include?(letter) and !self.wrong_guesses.include?(letter)
+      if word.include?(letter)
+        self.guesses << letter
+      else
+        self.wrong_guesses << letter
+      end
     else
-      self.wrong_guesses = letter
+      false
     end
   end
 
