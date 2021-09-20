@@ -16,9 +16,13 @@ class WordGuesserGame
 
   end
 
-  def guess(letter='')
+  def guess(letter)
     # puts word, letter, word.include?(letter)
-    if letter.match(/\A[a-z]\z/) and !self.guesses.include?(letter) and !self.wrong_guesses.include?(letter)
+
+    raise ArgumentError.new("Expected single alphabetical letter. Got nil.") if letter == nil
+    raise ArgumentError.new("Expected single alphabetical letter. Got #{letter}.") unless letter.match(/\A[a-z]\z/i) and !letter.nil?
+    letter = letter.downcase
+    if !self.guesses.include?(letter) and !self.wrong_guesses.include?(letter)
       if word.include?(letter)
         self.guesses << letter
       else
