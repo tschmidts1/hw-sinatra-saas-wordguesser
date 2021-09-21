@@ -25,6 +25,8 @@ class WordGuesserGame
     if !self.guesses.include?(letter) and !self.wrong_guesses.include?(letter)
       if word.include?(letter)
         self.guesses << letter
+        word.split('').each_index {|a| if word[a].match(letter)
+                              self.working_word[a]=word[a] end}
       else
         self.wrong_guesses << letter
       end
@@ -34,7 +36,7 @@ class WordGuesserGame
   end
 
   def word_with_guesses
-    self.working_word = self.working_word.join
+    self.working_word.join
   end
 
 
