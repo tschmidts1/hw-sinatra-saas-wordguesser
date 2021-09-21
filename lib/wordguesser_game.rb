@@ -2,7 +2,7 @@ class WordGuesserGame
 
   # add the necessary class methods, attributes, etc. here
   # to make the tests in spec/wordguesser_game_spec.rb pass.
-  attr_accessor :word, :guesses, :wrong_guesses
+  attr_accessor :word, :guesses, :wrong_guesses, :working_word
 
   # Get a word from remote "random word" service
 
@@ -13,7 +13,7 @@ class WordGuesserGame
     @word = word
     @guesses = ''
     @wrong_guesses = ''
-
+    @working_word = word.split('').each{|a| a.replace('-')}
   end
 
   def guess(letter)
@@ -34,7 +34,7 @@ class WordGuesserGame
   end
 
   def word_with_guesses
-
+    self.working_word = self.working_word.join
   end
 
 
