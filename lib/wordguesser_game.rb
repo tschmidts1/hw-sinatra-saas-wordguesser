@@ -53,6 +53,7 @@ class WordGuesserGame
   # and then running $ irb -I. -r app.rb
   # And then in the irb: irb(main):001:0> WordGuesser.get_random_word
   #  => "cooking"   <-- some random word
+  # This works!!
   def self.get_random_word
     require 'uri'
     require 'net/http'
