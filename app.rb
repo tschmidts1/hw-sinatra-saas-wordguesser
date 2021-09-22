@@ -55,6 +55,11 @@ class WordGuesserApp < Sinatra::Base
   # wrong_guesses and word_with_guesses from @game.
   get '/show' do
     ### YOUR CODE HERE ###
+    if !@game.word_with_guesses.include?('-')
+      redirect '/win'
+    elsif @game.wrong_guesses.length >= 7
+      redirect '/lose'
+    end
     erb :show # You may change/remove this line
   end
   
