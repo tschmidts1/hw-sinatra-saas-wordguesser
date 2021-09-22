@@ -104,6 +104,24 @@ describe WordGuesserGame do
     end
   end
 
+  describe 'displayed another word with guesses' do
+    before :each do
+      @game = WordGuesserGame.new('foobar')
+    end
+    # for a given set of guesses, what should the word look like?
+    @test_cases = {
+      'ao' =>  '-oo-a-',
+      'rbf' => 'f--b-r',
+      'azxoy' => '-oo-a-'
+    }
+    @test_cases.each_pair do |guesses, displayed|
+      it "should be '#{displayed}' when guesses are '#{guesses}'" do
+        guess_several_letters(@game, guesses)
+        expect(@game.word_with_guesses).to eq(displayed)
+      end
+    end
+  end
+
   describe 'game status' do
     before :each do 
       @game = WordGuesserGame.new('dog')
