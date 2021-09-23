@@ -45,8 +45,10 @@ class WordGuesserApp < Sinatra::Base
       flash[:message]="You have already used that letter."
     elsif !letter.match(/\A[a-zA-Z]\z/)
       flash[:message]="Invalid guess. You must enter a letter."
+    else
+      @game.guess(letter)
     end
-    @game.guess(letter)
+
     redirect '/show'
   end
   
