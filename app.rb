@@ -44,7 +44,7 @@ class WordGuesserApp < Sinatra::Base
     elsif @game.guesses.include?(letter) or @game.wrong_guesses.include?(letter)
       flash[:message]="You have already used that letter."
     elsif !letter.match(/\A[a-zA-Z]\z/)
-      flash[:message]="Invalid guess. You must a letter."
+      flash[:message]="Invalid guess. You must enter a letter."
     end
     @game.guess(letter)
     redirect '/show'
@@ -56,13 +56,12 @@ class WordGuesserApp < Sinatra::Base
   # Notice that the show.erb template expects to use the instance variables
   # wrong_guesses and word_with_guesses from @game.
   get '/show' do
-    ### YOUR CODE HERE ###
     if !@game.word_with_guesses.include?('-')
       redirect '/win'
     elsif @game.wrong_guesses.length >= 7
       redirect '/lose'
     end
-    erb :show # You may change/remove this line
+    erb :show
   end
   
   get '/win' do
