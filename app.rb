@@ -43,7 +43,7 @@ class WordGuesserApp < Sinatra::Base
       flash[:message]="Invalid guess. You must enter a letter."
     elsif @game.guesses.include?(letter) or @game.wrong_guesses.include?(letter)
       flash[:message]="You have already used that letter."
-    elsif !letter.match(/\A[a-z]\z/i)
+    elsif !letter.match(/\A[a-zA-Z]\z/)
       flash[:message]="Invalid guess. You must a letter."
     end
     @game.guess(letter)
