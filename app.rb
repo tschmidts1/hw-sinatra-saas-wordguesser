@@ -39,6 +39,7 @@ class WordGuesserApp < Sinatra::Base
   # If a guess is invalid, set flash[:message] to "Invalid guess."
   post '/guess' do
     letter = params[:guess].to_s[0]
+    letter = letter.downcase
     if letter == nil
       flash[:message]="Invalid guess. You must enter a letter."
     elsif @game.guesses.include?(letter) or @game.wrong_guesses.include?(letter)
